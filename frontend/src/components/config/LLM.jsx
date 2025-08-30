@@ -17,7 +17,12 @@ export default function LLM({ onBack }) {
           setEndpoint('https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent');
         }
       })
-      .catch(() => {});
+      .catch(() => {
+        const local = JSON.parse(localStorage.getItem('llm-config') || '{}');
+        if (local.provider) setProvider(local.provider);
+        if (local.endpoint) setEndpoint(local.endpoint);
+        if (local.key) setKey(local.key);
+      });
   }, []);
 
   const saveConfig = async () => {
@@ -28,6 +33,7 @@ export default function LLM({ onBack }) {
       body: JSON.stringify(payload)
     });
     setSaved(true);
+    localStorage.setItem('llm-config', JSON.stringify(payload));
     setTimeout(() => setSaved(false), 2000);
   };
 

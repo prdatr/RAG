@@ -4,7 +4,10 @@ export default function Analytics({ onBack }) {
   const [metrics, setMetrics] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:8000/analytics').then(r => r.json()).then(setMetrics);
+    fetch('http://localhost:8000/analytics')
+      .then(r => r.json())
+      .then(setMetrics)
+      .catch(() => setMetrics([]));
   }, []);
 
   return (

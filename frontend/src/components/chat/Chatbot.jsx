@@ -1,10 +1,15 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 export default function Chatbot({ onBack }) {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
   const [mode, setMode] = useState('kb');
   const [instructions, setInstructions] = useState('');
+  const endRef = useRef(null);
+
+  useEffect(() => {
+    endRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages]);
 
   const sendMessage = async () => {
     if (!input.trim()) return;
@@ -47,6 +52,7 @@ export default function Chatbot({ onBack }) {
             )}
           </div>
         ))}
+        <div ref={endRef} />
       </div>
       <div className="chat-input">
         <input

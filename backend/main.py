@@ -22,6 +22,7 @@ CONFIG_FILE = Path(__file__).parent / "config.json"
 llm_config: dict = {}
 vector_store = None
 analytics_data: List[dict] = []
+ALLOWED_EXTS = {".pdf", ".ppt", ".pptx", ".doc", ".docx", ".txt", ".md"}
 
 
 def load_config():
@@ -43,9 +44,12 @@ load_config()
 async def upload(file: UploadFile = File(...)):
     if not llm_config.get("key"):
         return {"error": "LLM not configured"}
+    ext = Path(file.filename).suffix.lower()
+    if ext not in ALLOWED_EXTS:
+        return {"error": "Unsupported file type"}
     content = await file.read()
     text = ""
-    if file.filename.lower().endswith(".pdf"):
+    if ext == ".pdf":
         from pypdf import PdfReader
         reader = PdfReader(BytesIO(content))
         text = "".join(page.extract_text() or "" for page in reader.pages)

@@ -3,6 +3,7 @@ import { useState } from 'react';
 export default function Upload({ onBack }) {
   const [file, setFile] = useState(null);
   const [progress, setProgress] = useState(0);
+  const [message, setMessage] = useState('');
 
   const handleUpload = async () => {
     if (!file) return;
@@ -16,10 +17,17 @@ export default function Upload({ onBack }) {
       }
     };
     xhr.onload = () => {
+      try {
+        const data = JSON.parse(xhr.responseText);
+        setMessage(data.error ? data.error : 'Upload complete');
+      } catch {
+        setMessage('Upload complete');
+      }
       setTimeout(() => {
         setProgress(0);
       }, 500);
     };
+    xhr.onerror = () => setMessage('Upload failed');
     xhr.send(formData);
   };
 
@@ -43,6 +51,7 @@ export default function Upload({ onBack }) {
           </div>
         </div>
       )}
+      {message && <div style={{ marginTop: '0.5rem' }}>{message}</div>}
     </div>
   );
 }

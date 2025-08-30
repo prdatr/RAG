@@ -14,3 +14,5 @@ __pycache__/
 .env
 backend/config.json
 .DS_Store
+.vscode/
+*.log

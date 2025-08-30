@@ -1,4 +1,6 @@
 import { useState } from 'react';
+
+// RAG application root component
 import Upload from './config/Upload';
 import LLM from './config/LLM';
 import Analytics from './config/Analytics';

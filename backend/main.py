@@ -9,7 +9,6 @@ from typing import List
 import requests
 import json
 
-
 app = FastAPI()
 app.add_middleware(
     CORSMiddleware,

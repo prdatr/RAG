@@ -4,7 +4,48 @@
   width: 100%;
 }
 
+.rag-container {
+  padding: 1rem 2rem;
+  font-family: Arial, sans-serif;
+}
+
+.rag-tabs button {
+  margin-right: 1rem;
+  padding: 0.5rem 1rem;
+  background: #e5e7eb;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.rag-tabs .active {
+  background: #2563eb;
+  color: white;
+}
+
+.config-tabs {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.config-tabs button {
+  margin-right: 1rem;
+  padding: 0.25rem 0.75rem;
+  border: none;
+  background: #f3f4f6;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.config-tabs .active {
+  background: #2563eb;
+  color: white;
+}
+
 .chat-window {
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  padding: 1rem;
   max-width: 600px;
   width: 100%;
 }
@@ -36,4 +77,3 @@
   color: white;
   border-radius: 0 0.5rem 0.5rem 0;
 }
-

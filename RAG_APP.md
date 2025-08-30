@@ -41,4 +41,3 @@ With this all Configurations are done
 
 4.4. If a response is coming from Knowledge base identify which files were used to provide the answer, give them as reference below the response
 
-Let me know if there is anything to be clarified before this needs to be coded

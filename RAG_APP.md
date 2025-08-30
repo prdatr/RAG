@@ -3,7 +3,7 @@
 
 1\. Frontend - **React**
 
-2\. Backend - **Python**
+2\. Backend - **Python with Langchain**
 
 3\. LLM ( both embedding and retrieval) - **Gemini or Azure OpenAI**
 

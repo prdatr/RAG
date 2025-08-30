@@ -1,10 +1,10 @@
+faiss-cpu
 fastapi
-uvicorn
+google-generativeai
 langchain
 langchain-community
-python-multipart
-faiss-cpu
-google-generativeai
 langchain-google-genai
 pypdf
+python-multipart
 requests
+uvicorn

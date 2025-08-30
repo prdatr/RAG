@@ -1,16 +1,21 @@
 .detail-card {
   max-width: 600px;
   margin: 0 auto;
+  width: 100%;
 }
 
 .chat-window {
   max-width: 600px;
+  width: 100%;
 }
 
 .chat-messages {
   height: 300px;
   overflow-y: auto;
   margin-bottom: 1rem;
+  border: 1px solid #e5e7eb;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
 }
 
 .chat-input {

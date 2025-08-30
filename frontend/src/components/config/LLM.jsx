@@ -13,15 +13,19 @@ export default function LLM({ onBack }) {
         if (data.provider) setProvider(data.provider);
         if (data.endpoint) setEndpoint(data.endpoint);
         if (data.key) setKey(data.key);
+        if (!data.endpoint && data.provider === 'gemini') {
+          setEndpoint('https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent');
+        }
       })
       .catch(() => {});
   }, []);
 
   const saveConfig = async () => {
+    const payload = { provider, endpoint, key };
     await fetch('http://localhost:8000/llm-config', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ provider, endpoint, key })
+      body: JSON.stringify(payload)
     });
     setSaved(true);
     setTimeout(() => setSaved(false), 2000);

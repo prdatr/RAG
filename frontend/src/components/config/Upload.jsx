@@ -26,7 +26,11 @@ export default function Upload({ onBack }) {
   return (
     <div className="dashboard-card detail-card">
       <h3>Upload Files / Connect SharePoint</h3>
-      <input type="file" onChange={e => setFile(e.target.files[0])} />
+      <input
+        type="file"
+        accept=".pdf,.ppt,.pptx,.doc,.docx,.txt,.md"
+        onChange={e => setFile(e.target.files[0])}
+      />
       <div style={{ marginTop: '1rem' }}>
         <button onClick={handleUpload} className="primary-btn">Upload</button>
         <button onClick={onBack} className="primary-btn" style={{ marginLeft: '0.5rem' }}>Back</button>

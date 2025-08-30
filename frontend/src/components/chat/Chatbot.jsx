@@ -54,7 +54,7 @@ export default function Chatbot({ onBack }) {
           onChange={e => setInput(e.target.value)}
           onKeyDown={e => e.key === 'Enter' && sendMessage()}
         />
-        <button onClick={sendMessage}>Send</button>
+        <button onClick={sendMessage} disabled={!input.trim()}>Send</button>
       </div>
       <div style={{ marginTop: '1rem' }}>
         <button onClick={onBack} className="primary-btn">Back</button>

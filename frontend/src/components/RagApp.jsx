@@ -46,6 +46,9 @@ export default function RagApp() {
         <h1>RAG</h1>
       </header>
       <section className="overview">
+        {view === 'menu' && (
+          <p style={{ marginBottom: '1rem' }}>Choose a section to configure or chat with your data.</p>
+        )}
         {renderView()}
       </section>
     </div>

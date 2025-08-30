@@ -5,6 +5,7 @@ from langchain_community.vectorstores import FAISS
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from pathlib import Path
 from io import BytesIO
+from typing import List
 import requests
 import json
 
@@ -21,7 +22,7 @@ app.add_middleware(
 CONFIG_FILE = Path(__file__).parent / "config.json"
 llm_config: dict = {}
 vector_store = None
-analytics_data = []
+analytics_data: List[dict] = []
 
 
 def load_config():
@@ -75,6 +76,12 @@ async def get_llm_config_endpoint():
 @app.get("/analytics")
 async def analytics():
     return analytics_data
+
+
+@app.get("/health")
+async def health() -> dict:
+    """Simple health check for deployment environments."""
+    return {"status": "ok"}
 
 
 @app.post("/chat")
